@@ -7,8 +7,11 @@ import 'package:learning_app/app_states.dart';
 import 'package:learning_app/pages/sign_in/sign_in.dart';
 import 'package:learning_app/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:learning_app/pages/welcome/welcome.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
