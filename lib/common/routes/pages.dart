@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learning_app/common/routes/names.dart';
+import 'package:learning_app/global.dart';
 import 'package:learning_app/pages/application/application_page.dart';
 import 'package:learning_app/pages/application/bloc/app_blocs.dart';
 import 'package:learning_app/pages/register/bloc/register_blocs.dart';
@@ -53,12 +54,19 @@ class AppPages {
       // check for route name macthing when navigation gets triggered.
       var result = routes().where((element) => element.route == settings.name);
       if (result.isNotEmpty) {
-        return MaterialPageRoute(
-            builder: (_) => result.first.page, settings: settings);
+        bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
+
+        if (result.first.route == AppRoutes.INITIAL && deviceFirstOpen) {
+          bool isLoggedin = Global.storageService.getIsLoggedIn();
+          if (isLoggedin) {
+            return MaterialPageRoute(builder: (_) => const ApplicationPage(), settings: settings);
+          }
+          return MaterialPageRoute(builder: (_) => const SignIn(), settings: settings);
+        }
+        return MaterialPageRoute(builder: (_) => result.first.page, settings: settings);
       }
     }
-    return MaterialPageRoute(
-        builder: (_) => const SignIn(), settings: settings);
+    return MaterialPageRoute(builder: (_) => const SignIn(), settings: settings);
   }
 }
 
