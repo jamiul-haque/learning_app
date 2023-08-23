@@ -24,10 +24,10 @@ AppBar buildAppBar(String type) {
 }
 
 // we need context for accessing bloc
-Widget buildThirtPartyLogin(BuildContext context) {
+Widget buildThirdPartyLogin(BuildContext context) {
   return Container(
     margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
-    padding: EdgeInsets.only(left: 25.w, right: 25.w),
+    padding: EdgeInsets.only(left: 50.w, right: 50.w),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -134,7 +134,7 @@ Widget forgotPassword() {
     child: GestureDetector(
       onTap: () {},
       child: Text(
-        "Forgot Password",
+        "Forgot Password?",
         style: TextStyle(
             color: AppColors.primaryText,
             decoration: TextDecoration.underline,
@@ -145,9 +145,10 @@ Widget forgotPassword() {
   );
 }
 
-Widget buildLogInAndRegButton(String buttonName, String buttonType,void Function()?func) {
+Widget buildLogInAndRegButton(
+    String buttonName, String buttonType, void Function()? func) {
   return GestureDetector(
-    onTap:func,
+    onTap: func,
     child: Container(
       margin: EdgeInsets.only(
           left: 25.w, right: 25.w, top: buttonType == "login" ? 40.h : 20.h),

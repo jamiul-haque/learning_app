@@ -29,7 +29,7 @@ class _SignInState extends State<SignIn> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  buildThirtPartyLogin(context),
+                  buildThirdPartyLogin(context),
                   Center(
                     child: reusableText("Or use your email account to login"),
                   ),
@@ -56,6 +56,7 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                   forgotPassword(),
+                  SizedBox(height: 70.h),
                   buildLogInAndRegButton("Log In", "login", () {
                     SignInController(context: context).handleSignIn("email");
                   }),
