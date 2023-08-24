@@ -24,15 +24,25 @@ class _HomePageState extends State<HomePage> {
             builder: (context, state) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 0, horizontal: 25.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                homePageText("Hello", color: AppColors.primaryThirdElementText),
-                homePageText("Learning App", top: 6),
-                SizedBox(height: 20.h),
-                searchView(),
-                slidersView(context, state),
-                menuView(),
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: homePageText("Hello",
+                      color: AppColors.primaryThirdElementText),
+                ),
+                SliverToBoxAdapter(
+                  child: homePageText("Learning App", top: 6),
+                ),
+                SliverPadding(padding: EdgeInsets.only(top: 20.h)),
+                SliverToBoxAdapter(
+                  child: searchView(),
+                ),
+                SliverToBoxAdapter(
+                  child: slidersView(context, state),
+                ),
+                SliverToBoxAdapter(
+                  child: menuView(),
+                )
               ],
             ),
           );
