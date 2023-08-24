@@ -120,7 +120,7 @@ Widget searchView() {
   );
 }
 
-Widget slidersView(BuildContext context,HomePageStates state) {
+Widget slidersView(BuildContext context, HomePageStates state) {
   return Column(
     children: [
       Container(
@@ -128,10 +128,13 @@ Widget slidersView(BuildContext context,HomePageStates state) {
         height: 160.h,
         margin: EdgeInsets.only(top: 20.h),
         child: PageView(
-          onPageChanged: (value) => context.read<HomePageBlocs>().add(HomePageDots(value)),
+          onPageChanged: (value) =>
+              context.read<HomePageBlocs>().add(HomePageDots(value)),
           children: [
             _slidersContainer(path: "assets/icons/art.png"),
+            SizedBox(width: 5.w),
             _slidersContainer(path: "assets/icons/image_1.png"),
+            SizedBox(width: 5.w),
             _slidersContainer(path: "assets/icons/image_2.png"),
           ],
         ),
@@ -164,5 +167,70 @@ Widget _slidersContainer({String path = "assets/icons/art.png"}) {
         image: AssetImage(path),
       ),
     ),
+  );
+}
+
+Widget menuView() {
+  return Column(
+    children: [
+      Container(
+        width: 325.w,
+        margin: EdgeInsets.only(top: 15.h),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            _reusableText("Choose your course"),
+            GestureDetector(
+              child: _reusableText(
+                "See all",
+                color: AppColors.primaryThirdElementText,
+                fontSize: 12,
+              ),
+            ),
+          ],
+        ),
+      ),
+      Container(
+        margin: EdgeInsets.only(top: 20.h),
+        child: Row(
+          children: [
+            _reusableMenuText("All"),
+            _reusableMenuText("Popular",
+                textColor: AppColors.primaryThirdElementText,
+                backgroundColor: Colors.white),
+            _reusableMenuText("Newest",
+                textColor: AppColors.primaryThirdElementText,
+                backgroundColor: Colors.white),
+          ],
+        ),
+      ),
+    ],
+  );
+}
+
+Widget _reusableText(String text,
+    {Color color = AppColors.primaryText,
+    int fontSize = 16,
+    FontWeight fontWeight = FontWeight.bold}) {
+  return Text(
+    text,
+    style:
+        TextStyle(color: color, fontWeight: fontWeight, fontSize: fontSize.sp),
+  );
+}
+
+Widget _reusableMenuText(String menuText,
+    {Color textColor = AppColors.primaryElement,
+    Color backgroundColor = AppColors.primaryElement}) {
+  return Container(
+    margin: EdgeInsets.only(right: 20.w),
+    padding: EdgeInsets.only(left: 15.w, right: 15.w, top: 5.h, bottom: 5.h),
+    decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(7.w),
+        border: Border.all(color: backgroundColor)),
+    child: _reusableText(menuText,
+        color: textColor, fontSize: 12, fontWeight: FontWeight.normal),
   );
 }

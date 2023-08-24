@@ -31,7 +31,8 @@ class _HomePageState extends State<HomePage> {
                 homePageText("Learning App", top: 6),
                 SizedBox(height: 20.h),
                 searchView(),
-                slidersView(context,state),
+                slidersView(context, state),
+                menuView(),
               ],
             ),
           );
