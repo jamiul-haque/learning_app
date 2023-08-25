@@ -6,6 +6,8 @@ import 'package:learning_app/pages/application/application_page.dart';
 import 'package:learning_app/pages/application/bloc/app_blocs.dart';
 import 'package:learning_app/pages/home/bloc/home_page_blocs.dart';
 import 'package:learning_app/pages/home/home_page.dart';
+import 'package:learning_app/pages/profile/settings/bloc/settings_blocs.dart';
+import 'package:learning_app/pages/profile/settings/settings_page.dart';
 import 'package:learning_app/pages/register/bloc/register_blocs.dart';
 import 'package:learning_app/pages/register/register.dart';
 import 'package:learning_app/pages/sign_in/bloc/sign_in_bloc.dart';
@@ -42,6 +44,11 @@ class AppPages {
         route: AppRoutes.HOME_PAGE,
         page: const HomePage(),
         bloc: BlocProvider(create: (_) => HomePageBlocs()),
+      ),
+      PageEntity(
+        route: AppRoutes.SETTINGS,
+        page: const SettingsPage(),
+        bloc: BlocProvider(create: (_) => SettingsBlocs()),
       ),
     ];
   }

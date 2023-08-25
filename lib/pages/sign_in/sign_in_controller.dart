@@ -42,7 +42,7 @@ class SignInController {
           if (user != null) {
             toastInfo(msg: "User exists");
             Global.storageService
-                .setString(AppConstants.STORAGE_TOKEN_KEY, "12345");
+                .setString(AppConstants.STORAGE_USER_TOKEN_KEY, "12345");
             Navigator.of(context)
                 .pushNamedAndRemoveUntil("/application", (route) => false);
             return;
