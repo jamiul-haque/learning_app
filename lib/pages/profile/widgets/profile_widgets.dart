@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learning_app/common/routes/routes.dart';
 import 'package:learning_app/common/values/colors.dart';
 
+import '../../../common/widgets/base_text_widget.dart';
+
 AppBar buildAppbar() {
   return AppBar(
     title: Container(
@@ -14,13 +16,7 @@ AppBar buildAppbar() {
             height: 12.h,
             child: Image.asset("assets/icons/menu.png"),
           ),
-          Text(
-            "Profile",
-            style: TextStyle(
-                color: AppColors.primaryText,
-                fontWeight: FontWeight.bold,
-                fontSize: 16.sp),
-          ),
+          reusableText("Profile"),
           SizedBox(
             width: 24.w,
             height: 24.h,
